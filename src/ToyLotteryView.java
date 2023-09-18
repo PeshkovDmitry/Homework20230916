@@ -8,6 +8,10 @@ public class ToyLotteryView implements View {
         this.scanner = scanner;
     }
 
+    @Override
+    public void showMessage(String message) {
+        System.out.println(message);
+    }
 
     public String getUserInput(String message) {
         System.out.print(message);

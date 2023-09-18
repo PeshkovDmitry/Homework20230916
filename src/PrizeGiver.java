@@ -1,26 +1,10 @@
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class PrizeGiver {
     private static PrizeGiver prizeGiver;
 
-    private static Logger logger;
-
-    private PrizeGiver() {
-        String logpath = "log.txt";
-        logger = Logger.getAnonymousLogger();
-        FileHandler fileHandler = null;
-        try {
-            fileHandler = new FileHandler(logpath, true);
-            fileHandler.setEncoding("UTF-8");
-            logger.addHandler(fileHandler);
-            SimpleFormatter simpleFormatter = new SimpleFormatter();
-            fileHandler.setFormatter(simpleFormatter);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private FileWriter fileWriter;
 
     public static PrizeGiver getInstance() {
         if (prizeGiver == null) {
@@ -29,11 +13,11 @@ public class PrizeGiver {
         return prizeGiver;
     }
 
-    public void log(String message) {
-        logger.info(message);
-    }
-
-    public void close() {
-        logger.getHandlers()[0].close();
+    public void give(Toy toy) {
+        try (FileWriter fileWriter = new FileWriter("prizes.txt", true)) {
+            fileWriter.write(toy.toString() + "\n");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

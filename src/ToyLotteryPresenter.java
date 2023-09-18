@@ -17,11 +17,13 @@ public class ToyLotteryPresenter implements Presenter{
                     model.createNewToy(
                             view.getUserInput(Messages.LOAD_NEW_TOY)
                     );
+                    view.showMessage("Игрушка добавлена");
                     break;
                 case "2":
                     model.changeWeight(
                             view.getUserInput(Messages.SET_NEW_WEIGHT)
                     );
+                    view.showMessage("Вес игрушки изменен");
                     break;
                 case "3":
                     model.startLottery(
@@ -29,6 +31,7 @@ public class ToyLotteryPresenter implements Presenter{
                                     view.getUserInput(Messages.START_LOTTERY)
                             )
                     );
+                    view.showMessage("Игрушки добавлены в очередь на выдачу");
                     break;
                 case "4":
                     model.givePrizes(
@@ -36,6 +39,7 @@ public class ToyLotteryPresenter implements Presenter{
                                     view.getUserInput(Messages.GIV_PRIZES)
                             )
                     );
+                    view.showMessage("Игрушки розданы");
                     break;
                 case "5":
                     run = false;
@@ -43,6 +47,4 @@ public class ToyLotteryPresenter implements Presenter{
             }
         }
     }
-
-
 }

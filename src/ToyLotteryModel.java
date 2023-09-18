@@ -2,13 +2,13 @@ import java.util.*;
 
 public class ToyLotteryModel implements Model{
 
-    private List<PrizeToy> toys = new ArrayList<>();
+    private List<Toy> toys = new ArrayList<>();
 
-    private PriorityQueue<PrizeToy> prizes = new PriorityQueue<>();
+    private Queue<Toy> prizes = new PriorityQueue<>();
 
     @Override
     public void createNewToy(String text) {
-        PrizeToy toy = new PrizeToy(text);
+        Toy toy = new PrizeToy(text);
         toys.add(toy);
     }
 
@@ -34,18 +34,18 @@ public class ToyLotteryModel implements Model{
     @Override
     public void givePrizes(Integer count) {
         for (int i = 0; i < count; i++) {
-            System.out.println(prizes.poll());
+            PrizeGiver.getInstance().give(prizes.poll());
         }
     }
 
-    private PrizeToy getRandom() {
+    private Toy getRandom() {
         int sumWeight = 0;
         int curWeight = 0;
         for (Toy t: toys) {
             sumWeight += t.getWeight();
         }
         Integer randInt = new Random().nextInt(sumWeight);
-        for (PrizeToy t: toys) {
+        for (Toy t: toys) {
             if (randInt < curWeight + t.getWeight()) {
                 return t;
             }

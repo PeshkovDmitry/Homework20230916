@@ -1,4 +1,4 @@
-public class PrizeToy implements Toy {
+public class PrizeToy implements Toy, Comparable {
 
     private Integer id;
 
@@ -31,5 +31,15 @@ public class PrizeToy implements Toy {
     @Override
     public void setWeight(Integer weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return ((PrizeToy) o).getId() - this.getId();
+    }
+
+    @Override
+    public String toString() {
+        return "№" + id + " " + title;
     }
 }
