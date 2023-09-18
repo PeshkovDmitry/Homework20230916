@@ -11,6 +11,6 @@ public class ToyLotteryView implements View {
 
     public String getUserInput(String message) {
         System.out.print(message);
-        return scanner.next();
+        return scanner.nextLine();
     }
 }
