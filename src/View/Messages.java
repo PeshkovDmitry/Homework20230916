@@ -1,3 +1,5 @@
+package View;
+
 public interface Messages {
     static String MAIN_MENU =
             "Выберите действие: \n" +

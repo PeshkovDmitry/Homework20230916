@@ -1,3 +1,7 @@
+import Model.Model;
+import Presenter.Presenter;
+import View.View;
+
 import java.util.Scanner;
 
 public class Main {

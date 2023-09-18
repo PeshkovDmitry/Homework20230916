@@ -1,6 +1,10 @@
+package Model;
+
+import Model.Model;
+
 import java.util.*;
 
-public class ToyLotteryModel implements Model{
+public class ToyLotteryModel implements Model {
 
     private List<Toy> toys = new ArrayList<>();
 

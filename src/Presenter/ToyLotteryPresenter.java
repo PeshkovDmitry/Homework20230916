@@ -1,4 +1,9 @@
-public class ToyLotteryPresenter implements Presenter{
+package Presenter;
+
+import Model.Model;
+import Presenter.Presenter;
+
+public class ToyLotteryPresenter implements Presenter {
     private Model model;
     private View view;
 

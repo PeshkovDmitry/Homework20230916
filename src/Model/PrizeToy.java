@@ -1,3 +1,5 @@
+package Model;
+
 public class PrizeToy implements Toy, Comparable {
 
     private Integer id;
