@@ -1,9 +1,6 @@
 package Model;
 
-import Exceptions.WrongFieldsNumberException;
-import Exceptions.WrongIdException;
-import Exceptions.WrongPrizesCountException;
-import Exceptions.WrongWeightException;
+import Exceptions.*;
 import Model.Model;
 
 import java.util.*;
@@ -42,17 +39,24 @@ public class ToyLotteryModel implements Model {
             if (weight <= 0)
                 throw new WrongWeightException(
                         "Вес должен быть положительным",
-                        data[2]
+                        weight.toString()
                 );
             for (int i = 0; i < toys.size(); i++) {
+                boolean find = false;
                 if (toys.get(i).getId() == id) {
                     toys.get(i).setWeight(weight);
+                    find = true;
                 }
+                if (!find)
+                    throw new WrongIdException(
+                            "Игрушка с таким ID не найдена",
+                            id.toString()
+                    );
             }
         } catch (NumberFormatException e) {
             throw new WrongWeightException(
                     "Неверный формат веса, должно быть целое число",
-                    data[2]
+                    data[1]
             );
         }
     }
@@ -70,7 +74,7 @@ public class ToyLotteryModel implements Model {
     }
 
     @Override
-    public void givePrizes(Integer count) throws WrongPrizesCountException {
+    public void givePrizes(Integer count) throws WrongPrizesCountException, PrizeGiverException {
         Integer queueSize = prizes.size();
         for (int i = 0; i < count; i++) {
             PrizeGiver.getInstance().give(prizes.poll());

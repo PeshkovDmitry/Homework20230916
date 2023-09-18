@@ -1,9 +1,6 @@
 package Model;
 
-import Exceptions.WrongFieldsNumberException;
-import Exceptions.WrongIdException;
-import Exceptions.WrongPrizesCountException;
-import Exceptions.WrongWeightException;
+import Exceptions.*;
 
 public interface Model {
 
@@ -13,5 +10,5 @@ public interface Model {
 
     void startLottery(Integer count) throws WrongPrizesCountException;
 
-    void givePrizes(Integer count) throws WrongPrizesCountException;
+    void givePrizes(Integer count) throws WrongPrizesCountException, PrizeGiverException;
 }

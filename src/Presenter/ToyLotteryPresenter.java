@@ -1,9 +1,6 @@
 package Presenter;
 
-import Exceptions.WrongFieldsNumberException;
-import Exceptions.WrongIdException;
-import Exceptions.WrongPrizesCountException;
-import Exceptions.WrongWeightException;
+import Exceptions.*;
 import Model.Model;
 import View.View;
 import View.Messages;
@@ -38,10 +35,10 @@ public class ToyLotteryPresenter implements Presenter {
                         model.changeWeight(
                                 view.getUserInput(Messages.SET_NEW_WEIGHT)
                         );
+                        view.showMessage("Вес игрушки изменен");
                     } catch (WrongFieldsNumberException | WrongIdException | WrongWeightException e) {
                         view.showMessage(e.getMessage());
                     }
-                    view.showMessage("Вес игрушки изменен");
                     break;
                 case "3":
                     try {
@@ -52,7 +49,7 @@ public class ToyLotteryPresenter implements Presenter {
                         );
                         view.showMessage("Игрушки добавлены в очередь на выдачу");
                     } catch (NumberFormatException | WrongPrizesCountException e) {
-                        view.showMessage("Количество игрушек должно быть целым числом");
+                        view.showMessage(e.getMessage());
                     }
                     break;
                 case "4":
@@ -63,8 +60,8 @@ public class ToyLotteryPresenter implements Presenter {
                                 )
                         );
                         view.showMessage("Игрушки розданы");
-                    } catch (NumberFormatException | WrongPrizesCountException e) {
-                        view.showMessage("Количество игрушек должно быть целым числом");
+                    } catch (NumberFormatException | WrongPrizesCountException | PrizeGiverException e) {
+                        view.showMessage(e.getMessage());
                     }
                     break;
                 case "5":

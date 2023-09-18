@@ -1,5 +1,7 @@
 package Model;
 
+import Exceptions.PrizeGiverException;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -15,11 +17,15 @@ public class PrizeGiver {
         return prizeGiver;
     }
 
-    public void give(Toy toy) {
+    public void give(Toy toy) throws PrizeGiverException {
         try (FileWriter fileWriter = new FileWriter("prizes.txt", true)) {
-            fileWriter.write(toy.toString() + "\n");
+            if (toy != null)
+                fileWriter.write(toy.toString() + "\n");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new PrizeGiverException(
+                    "Не могу сохранить параметры игрушки в файл",
+                    toy.toString()
+            );
         }
     }
 }

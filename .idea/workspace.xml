@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06734e97-318b-4703-b90d-58aa5c587545" name="Changes" comment="Рассортировал код в пакеты">
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="06734e97-318b-4703-b90d-58aa5c587545" name="Changes" comment="Проработана обработка исключений">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prizes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/prizes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exceptions/NotEnoughPrizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/PrizeGiverException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PrizeGiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PrizeGiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ToyLotteryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ToyLotteryModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presenter/ToyLotteryPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenter/ToyLotteryPresenter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695036266374</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Проработана обработка исключений">
+      <created>1695058582280</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1695058582280</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -135,6 +148,7 @@
     <MESSAGE value="Пока не работает" />
     <MESSAGE value="Работает, но надо сделать обработку исключений" />
     <MESSAGE value="Рассортировал код в пакеты" />
-    <option name="LAST_COMMIT_MESSAGE" value="Рассортировал код в пакеты" />
+    <MESSAGE value="Проработана обработка исключений" />
+    <option name="LAST_COMMIT_MESSAGE" value="Проработана обработка исключений" />
   </component>
 </project>
