@@ -1,5 +1,9 @@
 package Model;
 
+import Exceptions.WrongFieldsNumberException;
+import Exceptions.WrongIdException;
+import Exceptions.WrongWeightException;
+
 public class PrizeToy implements Toy, Comparable {
 
     private Integer id;
@@ -8,11 +12,36 @@ public class PrizeToy implements Toy, Comparable {
 
     private Integer weight;
 
-    public PrizeToy(String text) {
+    public PrizeToy(String text) throws WrongFieldsNumberException, WrongIdException, WrongWeightException {
         String[] data = text.split(" ");
-        id = Integer.parseInt(data[0]);
+        if (data.length != 3)
+            throw new WrongFieldsNumberException(
+                    "Неправильное количество переданных аргументов, должно быть три",
+                    text,
+                    data.length
+            );
+        try {
+            id = Integer.parseInt(data[0]);
+        } catch (NumberFormatException e) {
+            throw new WrongIdException(
+                    "Неверный формат ID, должно быть целое число",
+                    data[0]
+            );
+        }
         title = data[1];
-        weight = Integer.parseInt(data[2]);
+        try {
+            weight = Integer.parseInt(data[2]);
+            if (weight <= 0)
+                throw new WrongWeightException(
+                    "Вес должен быть положительным",
+                    data[2]
+            );
+        } catch (NumberFormatException e) {
+            throw new WrongWeightException(
+                    "Неверный формат веса, должно быть целое число",
+                    data[2]
+            );
+        }
     }
 
     @Override

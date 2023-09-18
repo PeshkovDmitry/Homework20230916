@@ -1,5 +1,9 @@
 package Presenter;
 
+import Exceptions.WrongFieldsNumberException;
+import Exceptions.WrongIdException;
+import Exceptions.WrongPrizesCountException;
+import Exceptions.WrongWeightException;
 import Model.Model;
 import View.View;
 import View.Messages;
@@ -20,32 +24,48 @@ public class ToyLotteryPresenter implements Presenter {
             String operation = view.getUserInput(Messages.MAIN_MENU);
             switch (operation) {
                 case "1":
-                    model.createNewToy(
-                            view.getUserInput(Messages.LOAD_NEW_TOY)
-                    );
-                    view.showMessage("Игрушка добавлена");
+                    try {
+                        model.createNewToy(
+                                view.getUserInput(Messages.LOAD_NEW_TOY)
+                        );
+                        view.showMessage("Игрушка добавлена");
+                    } catch (WrongWeightException | WrongFieldsNumberException | WrongIdException e) {
+                        view.showMessage(e.getMessage());
+                    }
                     break;
                 case "2":
-                    model.changeWeight(
-                            view.getUserInput(Messages.SET_NEW_WEIGHT)
-                    );
+                    try {
+                        model.changeWeight(
+                                view.getUserInput(Messages.SET_NEW_WEIGHT)
+                        );
+                    } catch (WrongFieldsNumberException | WrongIdException | WrongWeightException e) {
+                        view.showMessage(e.getMessage());
+                    }
                     view.showMessage("Вес игрушки изменен");
                     break;
                 case "3":
-                    model.startLottery(
-                            Integer.parseInt(
-                                    view.getUserInput(Messages.START_LOTTERY)
-                            )
-                    );
-                    view.showMessage("Игрушки добавлены в очередь на выдачу");
+                    try {
+                        model.startLottery(
+                                Integer.parseInt(
+                                        view.getUserInput(Messages.START_LOTTERY)
+                                )
+                        );
+                        view.showMessage("Игрушки добавлены в очередь на выдачу");
+                    } catch (NumberFormatException | WrongPrizesCountException e) {
+                        view.showMessage("Количество игрушек должно быть целым числом");
+                    }
                     break;
                 case "4":
-                    model.givePrizes(
-                            Integer.parseInt(
-                                    view.getUserInput(Messages.GIV_PRIZES)
-                            )
-                    );
-                    view.showMessage("Игрушки розданы");
+                    try {
+                        model.givePrizes(
+                                Integer.parseInt(
+                                        view.getUserInput(Messages.GIV_PRIZES)
+                                )
+                        );
+                        view.showMessage("Игрушки розданы");
+                    } catch (NumberFormatException | WrongPrizesCountException e) {
+                        view.showMessage("Количество игрушек должно быть целым числом");
+                    }
                     break;
                 case "5":
                     run = false;
