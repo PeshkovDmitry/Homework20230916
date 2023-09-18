@@ -1,7 +1,9 @@
 import Model.Model;
+import Model.ToyLotteryModel;
 import Presenter.Presenter;
+import Presenter.ToyLotteryPresenter;
 import View.View;
-
+import View.ToyLotteryView;
 import java.util.Scanner;
 
 public class Main {

@@ -1,7 +1,8 @@
 package Presenter;
 
 import Model.Model;
-import Presenter.Presenter;
+import View.View;
+import View.Messages;
 
 public class ToyLotteryPresenter implements Presenter {
     private Model model;
